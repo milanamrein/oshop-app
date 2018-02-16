@@ -1,3 +1,4 @@
+import { Product } from './../../../shared/models/product';
 import { Category } from './../../../shared/models/category';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CategoryService } from '../../../shared/services/category.service';
@@ -12,13 +13,13 @@ import 'rxjs/add/operator/take';
   templateUrl: './product-form.component.html',
   styleUrls: ['./product-form.component.css']
 })
-export class ProductFormComponent implements OnInit {
+export class ProductFormComponent {
 
   // list of categories observable
   categories$;
 
   // the product
-  product = {};
+  product = new Product();
 
   // the editable product's ID
   productId;
@@ -43,7 +44,7 @@ export class ProductFormComponent implements OnInit {
     // if there is an ID, then we are in edit mode
     // otherwise we are in add mode
     if (this.productId)
-      this.product = this.productService.get(this.productId)
+      this.productService.get(this.productId)
         .valueChanges()
         .subscribe(product => this.product = product);
   }
@@ -69,9 +70,6 @@ export class ProductFormComponent implements OnInit {
       this.productService.delete(this.productId);
       this.router.navigate(['/admin/products']);
     }
-  }
-
-  ngOnInit() {
   }
 
 }

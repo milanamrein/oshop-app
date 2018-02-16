@@ -3,6 +3,9 @@ import { Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/ro
 import { AuthService } from './../../shared/services/auth.service';
 import { Injectable } from '@angular/core';
 
+/**
+ * Checks if the user is unauthorized
+ */
 @Injectable()
 export class UnauthGuard {
 

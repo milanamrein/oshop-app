@@ -1,3 +1,4 @@
+import { Shipping } from './../../../shared/models/shipping';
 import { ShoppingCart } from '../../../shared/models/shopping-cart';
 import { OrderService } from '../../../shared/services/order.service';
 import { Router } from '@angular/router';
@@ -16,8 +17,14 @@ export class ShippingFormComponent implements OnInit, OnDestroy {
 
   // shopping cart input property
   @Input('cart') cart: ShoppingCart;
-  shipping = {};
+
+  // shipping data
+  shipping = new Shipping();
+
+  // authenticated user ID
   userId: string;
+  
+  // disposable subscription
   Subscription: Subscription;
 
   constructor(

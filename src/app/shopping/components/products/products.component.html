@@ -1,0 +1,21 @@
+
+<div class="row">
+
+  <!-- Categories menu -->
+  <div class="col-md-3">
+    <app-product-filter [category]="category"></app-product-filter>
+  </div>
+
+  <!-- List of products -->
+  <div class="col-md-9">
+    <div class="row" *ngIf="cart$ | async as cart">
+      <ng-container *ngFor="let product of filteredProducts; let i = index">
+        <div class="col-md-6">
+          <app-product-card [product]="product" [shopping-cart]="cart"></app-product-card>
+        </div>
+      </ng-container>  
+    </div>
+  </div>
+
+</div>
+

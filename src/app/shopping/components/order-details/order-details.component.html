@@ -1,0 +1,49 @@
+
+<h1>Order Details</h1>
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="card">  
+      <div class="card-body">
+        <h4 class="card-title">Shipping</h4>  
+        <p>Date of shipping: {{ getDate(order.datePlaced) }}</p>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            {{ order.shipping.name }}                          
+          </li>
+          <li class="list-group-item">
+            {{ order.shipping.addressLine1 }}              
+          </li>
+          <li class="list-group-item">
+            {{ order.shipping.addressLine2 }}              
+          </li>
+          <li class="list-group-item">
+            {{ order.shipping.city }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card">  
+      <div class="card-body">
+        <h4 class="card-title">Order Summary</h4>
+        <p class="card-text">{{ totalItemsCount() }} items in the order.</p>
+        <ul class="list-group list-group-flush">
+          <li *ngFor="let item of order.items" class="list-group-item">
+            {{ item.quantity }} x {{ item.product.title }}
+            <div class="float-right">
+              {{ item.totalPrice | currency:'USD':'symbol' }}
+            </div>
+          </li>
+          <li class="list-group-item font-weight-bold">
+            Total:
+            <div class="float-right">
+              {{ totalPrice() | currency:'USD':'symbol' }}
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

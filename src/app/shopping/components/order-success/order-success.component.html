@@ -1,0 +1,11 @@
+<div class="alert alert-success" role="alert">
+  <h4 class="alert-heading">Successful order!</h4>
+  <p>Order has been recorded successfully!</p>
+  <hr>
+  <a role="button"
+    routerLink="/"
+    class="btn btn-light btn-lg">Back to products page</a>
+  <a role="button"
+    [routerLink]="['/order', orderId]"
+    class="btn btn-info btn-lg">See order details</a>
+</div>

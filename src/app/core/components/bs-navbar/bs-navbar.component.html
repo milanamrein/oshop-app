@@ -6,15 +6,15 @@
     <a class="navbar-brand" routerLink="/">
       <i class="fa fa-envira" aria-hidden="true"></i>
     </a>
-    <button class="navbar-toggler" 
-            type="button" 
-            data-toggle="collapse" 
-            data-target="#navbarsExampleDefault" 
-            aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <button [class]="togglerClass"
+      type="button" data-toggle="collapse" 
+      data-target="#navbarCollapse" aria-controls="navbarCollapse" 
+      [attr.aria-expanded]="isAriaExpanded" aria-label="Toggle navigation"
+      (click)="toggleNavbarIcon()">
       <span class="navbar-toggler-icon"></span>
     </button>
   
-    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <div [class]="menuClass" id="navbarCollapse">
 
       <!-- Shopping Cart -->
       <ul class="navbar-nav mr-auto">

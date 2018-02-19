@@ -19,6 +19,10 @@ export class BsNavbarComponent implements OnInit {
   // the client's shopping cart
   cart$: Observable<ShoppingCart>;
 
+  isAriaExpanded: boolean = false;
+  togglerClass: string = 'navbar-toggler collapsed';
+  menuClass: string = 'collapse navbar-collapse';
+
   constructor(
     private auth: AuthService,
     private shoppingCartService: ShoppingCartService,
@@ -37,6 +41,15 @@ export class BsNavbarComponent implements OnInit {
   logout() {
     this.auth.logout();
     this.router.navigate(['/login']);
+  }
+
+  // toggles the navigation icon button
+  toggleNavbarIcon() {
+    this.isAriaExpanded = !this.isAriaExpanded;
+    this.togglerClass = (this.isAriaExpanded) 
+      ? 'navbar-toggler' : 'navbar-toggler collapsed';
+    this.menuClass = (this.isAriaExpanded)
+      ? 'collapse navbar-collapse show' : 'collapse navbar-collapse';
   }
 
 }
